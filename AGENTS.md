@@ -1,24 +1,41 @@
 # Repository Guidelines
 
-## Project Structure & Module Organization
-This repository should store code, notes, and lightweight metadata only. Kaggle competition files currently live at the top level (`train.csv`, `taxonomy.csv`, `train_soundscapes_labels.csv`, `sample_submission.csv`) and under `train_audio/`, `train_soundscapes/`, and `test_soundscapes/`, but they must remain ignored and must not be pushed to GitHub. If you add code later, prefer `src/` for reusable modules and `tests/` for automated checks.
+## Project Overview
+This repository is for BirdCLEF 2026 competition work. Keep the competition overview, rules summary, and any fixed background notes in tracked Markdown files so they stay easy to reference. If you already have the overview text prepared, copy it as-is into `README.md` or `docs/competition_overview.md` rather than rewriting it each time.
 
-## Build, Test, and Development Commands
-There is no build system in this snapshot. Use quick validation commands locally before submitting changes:
-- `python -m csv.tool train.csv | head` checks CSV readability.
-- `find train_audio -type f | wc -l` verifies clip counts after data updates.
-- `find train_soundscapes -type f | wc -l` confirms soundscape inventory.
-- `git status --short` confirms that competition data is still ignored before commit.
-- `python - <<'PY' ... PY` scripts are acceptable for one-off audits, but keep reusable logic in a tracked script if you add code later.
+## Project Structure
+Use the repository for code and experiment records only. Kaggle competition data must stay local and ignored by Git.
 
-## Coding Style & Naming Conventions
-If you add scripts or notebooks, prefer Python with 4-space indentation, snake_case filenames, and descriptive function names such as `validate_soundscape_labels.py`. Keep derived artifacts out of the repository unless they are required inputs. Preserve existing label keys like `primary_label` and directory names under `train_audio/`; downstream training pipelines usually depend on them exactly.
+- `README.md`: repository entry point and competition summary
+- `experiments/`: one folder per experiment
+- `src/`: shared training, feature, and inference utilities
+- `tests/`: automated tests for reusable code
+- local-only data: `train_audio/`, `train_soundscapes/`, `test_soundscapes/`, and top-level CSV files
 
-## Testing Guidelines
-For data changes, test integrity rather than unit behavior. Validate that CSV headers remain unchanged, referenced audio files exist, and no duplicate filenames are introduced. If you add code, place tests in `tests/` and name them `test_<feature>.py` so they run cleanly with `pytest`.
+## Experiment Workflow
+Use one folder per experiment. Do not mix multiple ideas in the same directory.
 
-## Commit & Pull Request Guidelines
-The current history is minimal, so use short, imperative commit subjects such as `Add dataset ignore rules` or `Fix mislabeled soundscape rows`. In pull requests, list changed files, note any record-count deltas, describe validation commands run, and include small tables or screenshots only when they clarify label or taxonomy changes.
+Example:
+```text
+experiments/
+  exp001_baseline/
+    README.md
+    train.py
+    inference.py
+    notes.md
+```
 
-## Data Handling Notes
-Do not commit or publish Kaggle competition audio, labels, or metadata to this repository. Keep raw files local, document preprocessing steps instead of uploading outputs, and use `.gitignore` to block accidental `git add .` commits. Do not overwrite raw audio in place without documenting the source and reason.
+Each experiment folder should record:
+- hypothesis: what you expect to improve and why
+- validation: how you tested it
+- result: score, metric delta, and short interpretation
+- next step: whether to keep, revise, or drop the idea
+
+## Coding Style & Naming
+Prefer Python with 4-space indentation and snake_case filenames such as `train_cnn.py` or `make_features.py`. Name experiment folders sequentially, for example `exp003_logmel_aug`. Keep shared logic in `src/`; keep experiment-specific code inside that experiment’s folder.
+
+## Validation & Safety
+Before committing, run `git status --short` and confirm that Kaggle audio, labels, and metadata are not staged. For reusable code, add `pytest` tests under `tests/` using `test_<feature>.py`. For experiment work, at minimum document the validation split, metric, and final score in the experiment’s `README.md`.
+
+## Commit & PR Guidelines
+Write short imperative commits such as `Add exp004 conformer baseline` or `Document exp005 validation result`. Keep pull requests focused on one experiment or one shared-code change. In the PR description, link the experiment folder and summarize the hypothesis, validation setup, and result.

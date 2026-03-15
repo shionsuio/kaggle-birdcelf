@@ -14,11 +14,14 @@
 - `AGENTS.md` defines repository workflow
 - `experiments/exp000_eda/` exists for initial data exploration
 - `experiments/exp001_baseline/` exists with `README.md`, `train.py`, `submission_baseline.ipynb`, and `notes.md`
+- `experiments/exp002_mlp_spectrogram/` exists for the next model step that preserves coarse time structure
+- `experiments/exp003_cnn/` exists for the first small spectrogram CNN attempt
 
 ## Immediate Next Steps
-- run the first Kaggle submission from `experiments/exp001_baseline/submission_baseline.ipynb`
-- record the first public LB result in `experiments/exp001_baseline/README.md`
-- compare `strict_plus_ratingless` against a wider training variant only after the first score
+- commit the updated `exp001` notes and notebook files
+- decide whether `exp002` is worth pursuing after its weak smoke-run result
+- smoke-test `experiments/exp003_cnn/train.py`
+- if `exp003` is promising, adapt the Kaggle submission notebook from `exp001`
 - move reusable data loading and feature code into `src/` once it appears twice
 - add smoke tests in `tests/` for any shared code
 

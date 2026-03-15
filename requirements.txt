@@ -8,3 +8,5 @@ scikit-learn
 librosa
 soundfile
 tqdm
+torch
+torchaudio

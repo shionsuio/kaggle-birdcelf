@@ -19,3 +19,6 @@ experiments/exp000_eda/high_confidence_candidates.csv
 experiments/exp000_eda/high_confidence_candidates_relaxed.csv
 experiments/exp000_eda/high_confidence_candidates_rescued.csv
 experiments/exp001_baseline/artifacts/
+experiments/exp001_baseline/kaggle_notebook/
+experiments/exp002_mlp_spectrogram/artifacts/
+experiments/exp003_cnn/artifacts/

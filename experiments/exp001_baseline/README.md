@@ -18,18 +18,18 @@ Establish a simple baseline for BirdCLEF 2026 that can be reproduced and improve
 - Runtime constraints: keep the first pass light enough to iterate quickly before building a Kaggle submission notebook
 
 ## Result
-- Public LB:
-- Local CV:
-- Submission file:
-- Run date:
+- Public LB: `0.623`
+- Local CV: smoke-run only for pipeline verification; not used as the main selection signal for this experiment
+- Submission file: `submission.csv` from Kaggle notebook `BirdCLEF 2026 Exp001 Baseline V6`
+- Run date: 2026-03-15
 
 ## Interpretation
-Summarize what worked, what failed, and the most likely reason.
+The end-to-end submission path works and produces a non-trivial public score. The conservative `strict_plus_ratingless` filtering strategy appears good enough for a first pass, but the current feature/model stack is too weak to be competitive. Most remaining headroom is likely in better audio representations and stronger sequence-aware models rather than more filtering logic.
 
 ## Next Step
-- Keep:
-- Change:
-- Drop:
+- Keep: `strict_plus_ratingless` as the current default training subset
+- Change: replace log-mel summary statistics with a model that preserves time structure
+- Drop: spending more time on placeholder submission plumbing for this experiment
 
 ## Notes
 Add links to related scripts, configs, notebooks, or commits for this experiment.

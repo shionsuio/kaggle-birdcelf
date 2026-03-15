@@ -9,12 +9,16 @@
 
 ## Current State
 - `README.md` contains the competition overview
+- `docs/ENVIRONMENT.md` contains local setup steps
 - `.gitignore` blocks competition data from Git tracking
 - `AGENTS.md` defines repository workflow
-- `experiments/exp001_baseline/` exists with `README.md`, `train.py`, and `notes.md`
+- `experiments/exp000_eda/` exists for initial data exploration
+- `experiments/exp001_baseline/` exists with `README.md`, `train.py`, `submission_baseline.ipynb`, and `notes.md`
 
 ## Immediate Next Steps
-- implement the first runnable baseline in `experiments/exp001_baseline/train.py`
+- run the first Kaggle submission from `experiments/exp001_baseline/submission_baseline.ipynb`
+- record the first public LB result in `experiments/exp001_baseline/README.md`
+- compare `strict_plus_ratingless` against a wider training variant only after the first score
 - move reusable data loading and feature code into `src/` once it appears twice
 - add smoke tests in `tests/` for any shared code
 

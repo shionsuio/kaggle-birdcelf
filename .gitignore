@@ -10,7 +10,12 @@ train_soundscapes/
 test_soundscapes/
 
 # Local artifacts
+.venv/
 .DS_Store
 __pycache__/
 *.py[cod]
 *.ipynb_checkpoints/
+experiments/exp000_eda/high_confidence_candidates.csv
+experiments/exp000_eda/high_confidence_candidates_relaxed.csv
+experiments/exp000_eda/high_confidence_candidates_rescued.csv
+experiments/exp001_baseline/artifacts/

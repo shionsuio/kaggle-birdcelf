@@ -7,6 +7,7 @@ This repository is for BirdCLEF 2026 competition work. Keep the competition over
 Use the repository for code and experiment records only. Kaggle competition data must stay local and ignored by Git.
 
 - `README.md`: repository entry point and competition summary
+- `docs/ENVIRONMENT.md`: local setup and package baseline
 - `docs/SESSION_HANDOFF.md`: current state and restart checklist
 - `experiments/`: one folder per experiment
 - `src/`: shared training, feature, and inference utilities
@@ -37,6 +38,9 @@ Prefer Python with 4-space indentation and snake_case filenames such as `train_c
 
 ## Validation & Safety
 Before committing, run `git status --short` and confirm that Kaggle audio, labels, and metadata are not staged. For reusable code, add `pytest` tests under `tests/` using `test_<feature>.py`. For experiment work, at minimum document the validation split, metric, and final score in the experiment’s `README.md`.
+
+## Environment
+Keep a minimal shared environment in `requirements.txt` and setup notes in `docs/ENVIRONMENT.md`. Add new packages deliberately; if a dependency is only for one experiment, record why in that experiment folder.
 
 ## Session Restart Workflow
 If work is interrupted, restart from `docs/SESSION_HANDOFF.md`. Update that file whenever the repository structure changes materially, a new baseline becomes the default reference point, or the next recommended action changes.

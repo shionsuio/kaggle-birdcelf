@@ -35,3 +35,6 @@ Summarize what worked, what failed, and the most likely reason.
 
 ## Notes
 Add links to related scripts, configs, notebooks, or commits for this experiment.
+
+- Training script: `train.py`
+- Scratch notes: `notes.md`
